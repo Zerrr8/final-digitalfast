@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#1E40AF">
+<title>Akun Saya — LuthzzStore</title>
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --pri:#2563EB;--pri-d:#1E40AF;--pri-50:#EFF6FF;--pri-100:#DBEAFE;--acc:#7C3AED;
+  --ink:#0F172A;--ink2:#334155;--mut:#64748B;--soft:#94A3B8;--line:#E2E8F0;--line2:#F1F5F9;
+  --bg:#F1F5F9;--card:#fff;--ok:#059669;--err:#DC2626;
+  --grad:linear-gradient(135deg,#2563EB 0%,#6D5AE6 55%,#7C3AED 100%);
+  --sh:0 1px 2px rgba(15,23,42,.04),0 8px 24px -12px rgba(15,23,42,.14);
+  --r:20px;
+}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{scroll-behavior:smooth}
+body{font-family:'Plus Jakarta Sans',system-ui,sans-serif;background:var(--bg);color:var(--ink);min-height:100vh;-webkit-font-smoothing:antialiased;padding-bottom:40px}
+body::before{content:"";position:fixed;inset:0 0 auto 0;height:260px;background:radial-gradient(120% 100% at 50% 0,#DBEAFE 0%,rgba(241,245,249,0) 70%);z-index:-1;pointer-events:none}
+svg{display:block;flex:none}
+.ic{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.hide{display:none!important}
+.wrap{max-width:560px;margin:0 auto;padding:0 16px}
+
+/* ===== top bar ===== */
+.bar{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.82);-webkit-backdrop-filter:saturate(180%) blur(14px);backdrop-filter:saturate(180%) blur(14px);border-bottom:1px solid rgba(226,232,240,.8)}
+.bar .wrap{display:flex;align-items:center;justify-content:space-between;height:58px}
+.bar-t{font-size:15.5px;font-weight:800;letter-spacing:-.01em}
+.ib{display:inline-flex;align-items:center;justify-content:center;gap:6px;height:38px;min-width:38px;padding:0 10px;border-radius:12px;border:1px solid var(--line);background:#fff;color:var(--ink2);font:inherit;font-size:13px;font-weight:700;text-decoration:none;cursor:pointer;transition:background .15s,transform .15s}
+.ib:hover{background:var(--line2)}.ib:active{transform:scale(.96)}
+.ib.out{color:var(--err);border-color:#FECACA;background:#FEF2F2}
+.ib.out:hover{background:#FEE2E2}
+
+/* ===== profile hero ===== */
+.hero{position:relative;margin-top:16px;background:var(--card);border-radius:24px;box-shadow:var(--sh);overflow:hidden}
+.cover{height:104px;background:var(--grad);position:relative;overflow:hidden}
+.cover::before{content:"";position:absolute;width:220px;height:220px;right:-60px;top:-110px;border-radius:50%;background:rgba(255,255,255,.14)}
+.cover::after{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.22) 1.2px,transparent 1.4px);background-size:16px 16px;-webkit-mask-image:linear-gradient(100deg,transparent 25%,#000);mask-image:linear-gradient(100deg,transparent 25%,#000)}
+.hero-b{padding:0 20px 20px;text-align:center}
+.av{position:relative;width:92px;height:92px;margin:-46px auto 0}
+.av img,.av .ini{width:92px;height:92px;border-radius:50%;object-fit:cover;display:flex;align-items:center;justify-content:center;background:var(--grad);color:#fff;font-weight:800;font-size:36px;border:4px solid #fff;box-shadow:0 8px 20px -6px rgba(37,99,235,.45)}
+.av button{position:absolute;right:-2px;bottom:2px;width:32px;height:32px;border-radius:50%;border:3px solid #fff;background:var(--ink);color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:transform .15s}
+.av button:hover{transform:scale(1.08)}
+.av button svg{width:14px;height:14px}
+.me-i{margin-top:12px;min-width:0}
+.me-i strong{display:block;font-size:19px;font-weight:800;letter-spacing:-.015em;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.me-i small{display:block;color:var(--mut);font-size:13px;margin-top:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.me-i .rm{margin-top:8px;background:none;border:0;color:var(--mut);font:inherit;font-size:12px;font-weight:600;cursor:pointer;padding:2px 6px;text-decoration:underline;text-underline-offset:3px}
+.me-i .rm:hover{color:var(--err)}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px;text-align:left}
+.stat{display:flex;align-items:center;gap:10px;padding:11px 12px;border:1px solid var(--line);border-radius:14px;background:#F8FAFC;font:inherit;color:inherit;text-align:left;cursor:pointer;min-width:0;transition:border-color .15s,background .15s}
+.stat:hover{border-color:var(--pri-100);background:var(--pri-50)}
+.stat i{width:34px;height:34px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:#fff;color:var(--pri);box-shadow:0 1px 3px rgba(15,23,42,.08);flex:none}
+.stat span{display:block;min-width:0}
+.stat small{display:block;font-size:11px;color:var(--mut);font-weight:600}
+.stat b{display:block;font-size:14px;font-weight:800;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+
+/* ===== tabs ===== */
+.tabs-w{position:sticky;top:58px;z-index:20;padding:14px 0 10px;background:linear-gradient(var(--bg) 70%,rgba(241,245,249,0))}
+.tabs{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:4px;box-shadow:0 1px 2px rgba(15,23,42,.04)}
+.tabs button{display:flex;align-items:center;justify-content:center;gap:6px;border:0;background:none;padding:10px 4px;border-radius:12px;font:inherit;font-size:13px;font-weight:700;color:var(--mut);cursor:pointer;transition:all .2s}
+.tabs button .ic{width:16px;height:16px}
+.tabs button:hover{color:var(--ink)}
+.tabs button.on{background:var(--grad);color:#fff;box-shadow:0 6px 14px -6px rgba(37,99,235,.6)}
+
+/* ===== cards ===== */
+section{animation:rise .35s ease both}
+@keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.card{background:var(--card);border-radius:var(--r);padding:20px;box-shadow:var(--sh);margin-bottom:14px;border:1px solid rgba(226,232,240,.6)}
+.ch{display:flex;align-items:center;gap:12px;margin-bottom:16px;padding-bottom:14px;border-bottom:1px solid var(--line2)}
+.ch .ti{flex:none;width:40px;height:40px;border-radius:12px;display:flex;align-items:center;justify-content:center;background:var(--pri-50);color:var(--pri)}
+.ch .ti.v{background:#F5F3FF;color:var(--acc)}.ch .ti.g{background:#ECFDF5;color:var(--ok)}
+h2{font-size:15.5px;font-weight:800;letter-spacing:-.01em}
+.desc{font-size:12.5px;color:var(--mut);margin-top:2px;line-height:1.5}
+label{display:block;font-size:12px;font-weight:700;color:var(--ink2);margin:14px 0 6px}
+.f{position:relative}
+.f>svg{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--soft);pointer-events:none;transition:color .15s}
+.f input[type]{padding-left:42px}
+.f:focus-within>svg{color:var(--pri)}
+.f .eye{position:absolute;right:6px;top:50%;transform:translateY(-50%);width:36px;height:36px;border:0;background:none;color:var(--soft);cursor:pointer;display:flex;align-items:center;justify-content:center;border-radius:10px}
+.f .eye:hover{color:var(--ink2);background:var(--line2)}
+.f.pw input[type]{padding-right:44px}
+input[type=text],input[type=email],input[type=tel],input[type=password],input[type=number]{width:100%;padding:13px 14px;border:1.5px solid var(--line);border-radius:12px;font:inherit;font-size:16px;font-weight:500;color:var(--ink);outline:none;background:#F8FAFC;transition:border-color .15s,box-shadow .15s,background .15s}
+input::placeholder{color:#A8B3C4;font-weight:400}
+input:focus{border-color:var(--pri);background:#fff;box-shadow:0 0 0 4px rgba(37,99,235,.12)}
+input[readonly]{color:var(--mut)}
+input[type=number]{-moz-appearance:textfield}
+input[type=number]::-webkit-outer-spin-button,input[type=number]::-webkit-inner-spin-button{-webkit-appearance:none}
+.go{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;margin-top:18px;padding:14px;border:0;border-radius:12px;background:var(--grad);color:#fff;font:inherit;font-weight:700;font-size:14.5px;cursor:pointer;box-shadow:0 10px 20px -10px rgba(37,99,235,.7);transition:transform .15s,box-shadow .15s,opacity .15s}
+.go:hover{box-shadow:0 12px 24px -10px rgba(37,99,235,.85)}
+.go:active{transform:scale(.985)}
+.go:disabled{opacity:.6;cursor:wait}
+.msg{font-size:13px;min-height:0;margin-top:10px;font-weight:600}
+.msg:empty{display:none}
+.msg.err{color:var(--err);background:#FEF2F2;padding:10px 12px;border-radius:10px}
+.msg.ok{color:#047857;background:#ECFDF5;padding:10px 12px;border-radius:10px}
+.sub{font-size:12px;color:var(--mut)}
+.mini{display:block;background:#fff;border:1.5px solid var(--pri);color:var(--pri);border-radius:12px;padding:11px;width:100%;font:inherit;font-weight:700;font-size:13.5px;cursor:pointer;transition:background .15s}
+.mini:hover{background:var(--pri-50)}
+
+/* ===== wallet ===== */
+.bal{position:relative;overflow:hidden;border:0;padding:22px;color:#fff;background:linear-gradient(135deg,#0F172A 0%,#1E3A8A 55%,#5B3FD8 100%);box-shadow:0 18px 30px -16px rgba(30,58,138,.7)}
+.bal::before{content:"";position:absolute;width:240px;height:240px;border-radius:50%;right:-70px;top:-90px;background:radial-gradient(circle,rgba(167,139,250,.55),transparent 70%)}
+.bal::after{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.12) 1px,transparent 1.2px);background-size:14px 14px;-webkit-mask-image:linear-gradient(120deg,transparent 40%,#000);mask-image:linear-gradient(120deg,transparent 40%,#000)}
+.bal>*{position:relative;z-index:1}
+.bal-t{display:flex;justify-content:space-between;align-items:center}
+.bal small{opacity:.8;font-size:12.5px;font-weight:600;letter-spacing:.02em}
+.chip{width:36px;height:26px;border-radius:6px;background:linear-gradient(135deg,#FDE68A,#F59E0B);opacity:.95;position:relative}
+.chip::after{content:"";position:absolute;inset:5px 9px;border:1.5px solid rgba(120,53,15,.4);border-radius:3px}
+.bal h1{font-size:34px;font-weight:800;letter-spacing:-.02em;margin:18px 0 20px;font-variant-numeric:tabular-nums}
+.bal-b{display:flex;justify-content:space-between;align-items:center;font-size:12px;opacity:.8;font-weight:600}
+.presets{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:0 0 12px}
+.presets button{padding:12px 4px;border:1.5px solid var(--line);border-radius:12px;background:#fff;font:inherit;font-weight:700;font-size:13px;color:var(--ink2);cursor:pointer;transition:all .15s}
+.presets button:hover{border-color:var(--pri-100);background:var(--pri-50)}
+.presets button.on{border-color:var(--pri);background:var(--pri-50);color:var(--pri-d);box-shadow:0 0 0 3px rgba(37,99,235,.1)}
+.rp-f::before{content:"Rp";position:absolute;left:14px;top:50%;transform:translateY(-50%);font-weight:700;font-size:14px;color:var(--soft);z-index:1}
+.rp-f input[type]{padding-left:44px}
+
+/* ===== transaksi ===== */
+.tx{display:flex;align-items:center;gap:12px;padding:12px 0;border-bottom:1px solid var(--line2);font-size:14px;font-weight:700}
+.tx:last-child{border:0;padding-bottom:0}
+.tx-i{width:40px;height:40px;border-radius:12px;display:flex;align-items:center;justify-content:center;flex:none;background:#ECFDF5;color:var(--ok)}
+.tx-i.m{background:#FEF2F2;color:var(--err)}.tx-i.r{background:var(--pri-50);color:var(--pri)}.tx-i.a{background:var(--line2);color:var(--mut)}
+.tx-b{flex:1;min-width:0}
+.tx small{display:block;color:var(--soft);font-size:11.5px;font-weight:500;margin-top:2px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.plus{color:var(--ok);font-weight:800;white-space:nowrap;font-variant-numeric:tabular-nums}.minus{color:var(--err);font-weight:800;white-space:nowrap;font-variant-numeric:tabular-nums}
+.empty{text-align:center;color:var(--soft);padding:28px 16px;font-size:13.5px;font-weight:500}
+.empty i{width:52px;height:52px;border-radius:16px;background:var(--line2);color:var(--soft);display:flex;align-items:center;justify-content:center;margin:0 auto 12px}
+.empty i svg{width:24px;height:24px}
+.empty a{color:var(--pri);font-weight:700;text-decoration:none}
+
+/* ===== pesanan ===== */
+.ord{position:relative;background:#fff;border-radius:var(--r);padding:16px 16px 16px 20px;margin-bottom:12px;box-shadow:var(--sh);border:1px solid rgba(226,232,240,.6);overflow:hidden}
+.ord::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--st,var(--soft))}
+.ord.s-paid{--st:var(--ok)}.ord.s-pending{--st:#F59E0B}.ord.s-expired,.ord.s-failed{--st:var(--err)}.ord.s-cancelled{--st:var(--soft)}
+.ord-h{display:flex;justify-content:space-between;align-items:center;gap:8px}
+.ord-h strong{font-size:14px;font-weight:800;display:flex;align-items:center;gap:8px;min-width:0}
+.ord-h strong svg{color:var(--pri);width:16px;height:16px}
+.ord-m{display:flex;flex-wrap:wrap;gap:6px 14px;margin:10px 0 0;font-size:12px;color:var(--mut);font-weight:600}
+.ord-m span{display:inline-flex;align-items:center;gap:5px}
+.ord-m svg{width:13px;height:13px;color:var(--soft)}
+.ord .body:not(:empty){margin-top:12px;padding-top:12px;border-top:1px dashed var(--line)}
+.badge{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:800;padding:5px 10px;border-radius:99px;white-space:nowrap}
+.badge::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor}
+.b-paid{background:#D1FAE5;color:#047857}.b-pending{background:#FEF3C7;color:#92400E}.b-expired,.b-failed{background:#FEE2E2;color:#B91C1C}.b-cancelled{background:var(--line);color:#475569}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+<style id="paycss"></style>
+</head>
+<body>
+<header class="bar"><div class="wrap">
+  <a class="ib" href="/" aria-label="Kembali ke toko"><svg class="ic" viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>Toko</a>
+  <div class="bar-t">Akun Saya</div>
+  <button class="ib out" id="out" type="button"><svg class="ic" viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><path d="M16 17l5-5-5-5"/><path d="M21 12H9"/></svg>Keluar</button>
+</div></header>
+
+<div class="wrap">
+  <div class="hero">
+    <div class="cover"></div>
+    <div class="hero-b">
+      <div class="av">
+        <span class="ini" id="avIni"></span><img id="avImg" class="hide" alt="" referrerpolicy="no-referrer">
+        <button type="button" id="avBtn" aria-label="Ganti foto profil">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 4h-5L8 6H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-3z"/><circle cx="12" cy="13" r="3.5"/></svg>
+        </button>
+        <input type="file" id="avFile" accept="image/jpeg,image/png,image/webp,image/gif" class="hide">
+      </div>
+      <div class="me-i"><strong id="meName"></strong><small id="meMail"></small><button type="button" class="rm hide" id="avRm">Hapus foto</button></div>
+      <div class="msg" id="avMsg"></div>
+      <div class="stats">
+        <button type="button" class="stat" data-go="saldo"><i><svg class="ic" viewBox="0 0 24 24"><path d="M20 12V8H6a2 2 0 0 1 0-4h12v4"/><path d="M4 6v12a2 2 0 0 0 2 2h14v-4"/><path d="M18 12a2 2 0 0 0 0 4h4v-4z"/></svg></i><span><small>Saldo</small><b id="stBal">Rp 0</b></span></button>
+        <button type="button" class="stat" data-go="orders"><i><svg class="ic" viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></i><span><small>Pesanan</small><b id="stOrd">Lihat riwayat</b></span></button>
+      </div>
+    </div>
+  </div>
+
+  <div class="tabs-w"><div class="tabs" role="tablist">
+    <button type="button" id="tProfil" data-t="profil" class="on"><svg class="ic" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>Profil</button>
+    <button type="button" id="tSaldo" data-t="saldo"><svg class="ic" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="3"/><path d="M2 10h20"/></svg>Saldo</button>
+    <button type="button" id="tOrd" data-t="orders"><svg class="ic" viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>Pesanan</button>
+  </div></div>
+
+  <!-- ===== PROFIL ===== -->
+  <section id="pProfil">
+    <form class="card" id="fProf" novalidate>
+      <div class="ch"><span class="ti"><svg class="ic" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></span><div><h2>Data diri</h2><p class="desc">Nama dan nomor WhatsApp dipakai untuk konfirmasi pesanan.</p></div></div>
+      <label for="fName">Nama</label>
+      <div class="f"><svg class="ic" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg><input id="fName" type="text" autocomplete="name" maxlength="100" required></div>
+      <label for="fPhone">Nomor WhatsApp</label>
+      <div class="f"><svg class="ic" viewBox="0 0 24 24"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2z"/></svg><input id="fPhone" type="tel" inputmode="tel" autocomplete="tel" placeholder="0812xxxxxxxx"></div>
+      <button class="go" type="submit">Simpan perubahan</button>
+      <div class="msg" id="mProf" role="status"></div>
+    </form>
+
+    <div class="card" id="pushCard">
+      <div class="ch"><span class="ti"><svg class="ic" viewBox="0 0 24 24"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg></span><div><h2>Notifikasi</h2><p class="desc">Status pesanan, saldo &amp; balasan chat muncul di notifikasi HP.</p></div></div>
+      <div data-push-control></div>
+    </div>
+
+    <form class="card" id="fMail" novalidate>
+      <div class="ch"><span class="ti v"><svg class="ic" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="M22 7l-10 6L2 7"/></svg></span><div><h2>Email</h2><p class="desc">Dipakai untuk masuk ke akun. Setelah diganti, masuk berikutnya memakai email baru.</p></div></div>
+      <label for="fEmail">Email</label>
+      <div class="f"><svg class="ic" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="3"/><path d="M22 7l-10 6L2 7"/></svg><input id="fEmail" type="email" inputmode="email" autocomplete="email" required></div>
+      <div id="mailPwBox">
+        <label for="fMailPw">Password saat ini</label>
+        <div class="f pw"><svg class="ic" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg><input id="fMailPw" type="password" autocomplete="current-password"></div>
+      </div>
+      <button class="go" type="submit">Pasang email</button>
+      <div class="msg" id="mMail" role="status"></div>
+    </form>
+
+    <form class="card" id="fPw" novalidate>
+      <div class="ch"><span class="ti g"><svg class="ic" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg></span><div><h2 id="pwTitle">Password</h2><p class="desc" id="pwDesc"></p></div></div>
+      <div id="curPwBox">
+        <label for="fCur">Password saat ini</label>
+        <div class="f pw"><svg class="ic" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg><input id="fCur" type="password" autocomplete="current-password"></div>
+      </div>
+      <label for="fNew">Password baru (min. 8 karakter)</label>
+      <div class="f pw"><svg class="ic" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg><input id="fNew" type="password" autocomplete="new-password" minlength="8"></div>
+      <button class="go" type="submit" id="pwGo">Simpan password</button>
+      <div class="msg" id="mPw" role="status"></div>
+    </form>
+  </section>
+
+  <!-- ===== CEK SALDO ===== -->
+  <section id="pSaldo" class="hide">
+    <div class="card bal">
+      <div class="bal-t"><small>Saldo Anda</small><span class="chip"></span></div>
+      <h1 id="bal">Rp 0</h1>
+      <div class="bal-b"><span id="balName"></span><span>Digital Fast</span></div>
+    </div>
+
+    <div class="card" id="depCard">
+      <div class="ch"><span class="ti"><svg class="ic" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 14h3v3h-3zM20 14v.01M14 20v.01M20 20h-3v1"/></svg></span><div><h2>Deposit Saldo</h2><p class="desc">Isi saldo cepat lewat QRIS.</p></div></div>
+      <div id="depForm">
+        <div class="presets" id="presets"></div>
+        <div class="f rp-f"><input id="amt" type="number" inputmode="numeric" placeholder="Atau ketik nominal lain"></div>
+        <button class="go" id="depGo">Buat QRIS Deposit</button>
+        <div class="msg err" id="depErr"></div>
+      </div>
+      <div id="depQr" class="hide"></div>
+    </div>
+
+    <div class="card">
+      <div class="ch"><span class="ti v"><svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><div><h2>Riwayat Transaksi</h2><p class="desc">Deposit, pembelian, dan pengembalian saldo.</p></div></div>
+      <div id="hisList"></div>
+    </div>
+  </section>
+
+  <!-- ===== PESANAN ===== -->
+  <section id="pOrd" class="hide"><div id="reqList"></div><div id="ordList"></div></section>
+</div>
+<script src="/pay.js"></script>
+<script src="/push.js" data-role="user" defer></script>
+<script>
+const $ = (i) => document.getElementById(i);
+const rp = Pay.rp, esc = Pay.esc;
+let me = null, stopDep = null, payInfo = {}, loaded = {};
+// gaya .pay-* diambil dari style.css (diambil sebagai teks agar tidak membawa gaya toko lain)
+fetch('/style.css').then(r => r.text()).then(t => { const i = t.indexOf('/* ===== Pembayaran'); if (i >= 0) $('paycss').textContent = t.slice(i); });
+
+const say = (id, text, ok) => { const el = $(id); el.textContent = text || ''; el.className = 'msg ' + (ok ? 'ok' : 'err'); };
+
+/* ---------- Tab ---------- */
+const TABS = { profil: ['tProfil', 'pProfil'], saldo: ['tSaldo', 'pSaldo'], orders: ['tOrd', 'pOrd'] };
+function show(t, push) {
+  if (!TABS[t]) t = 'profil';
+  for (const k in TABS) { $(TABS[k][0]).classList.toggle('on', k === t); $(TABS[k][1]).classList.toggle('hide', k !== t); }
+  if (push) history.replaceState(null, '', '#' + t);
+  if (t === 'saldo') loadWallet();
+  if (t === 'orders') loadOrders();
+}
+document.querySelectorAll('.tabs button').forEach(b => b.onclick = () => show(b.dataset.t, true));
+document.querySelectorAll('.stat').forEach(b => b.onclick = () => { show(b.dataset.go, true); $('pProfil').parentNode.querySelector('.tabs-w').scrollIntoView({ block: 'start' }); });
+
+/* tombol lihat/sembunyikan password */
+const EYE = '<svg class="ic" viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>';
+document.querySelectorAll('.f.pw').forEach(w => { const b = document.createElement('button'); b.type = 'button'; b.className = 'eye'; b.setAttribute('aria-label', 'Tampilkan password'); b.innerHTML = EYE; b.onclick = () => { const i = w.querySelector('input'); i.type = i.type === 'password' ? 'text' : 'password'; b.style.color = i.type === 'text' ? 'var(--pri)' : ''; }; w.appendChild(b); });
+window.addEventListener('hashchange', () => show(location.hash.slice(1)));
+
+/* ---------- Profil ---------- */
+function applyUser(u) {
+  me = u;
+  const first = (u.name || u.email || '?').trim().charAt(0).toUpperCase();
+  $('avIni').textContent = first;
+  if (u.picture) { $('avImg').src = u.picture; $('avImg').classList.remove('hide'); $('avIni').classList.add('hide'); }
+  else { $('avImg').classList.add('hide'); $('avIni').classList.remove('hide'); }
+  $('avRm').classList.toggle('hide', !u.picture);
+  $('meName').textContent = u.name; $('meMail').textContent = u.email; $('balName').textContent = u.name || '';
+  $('fName').value = u.name;
+  $('fPhone').value = u.phone ? (u.phone.startsWith('62') ? '0' + u.phone.slice(2) : u.phone) : '';
+  $('fEmail').value = u.email;
+  $('mailPwBox').classList.toggle('hide', !u.hasPassword);
+  $('curPwBox').classList.toggle('hide', !u.hasPassword);
+  $('pwTitle').textContent = u.hasPassword ? 'Ganti password' : 'Pasang password';
+  $('pwDesc').textContent = u.hasPassword ? 'Gunakan password yang kuat dan belum dipakai di tempat lain.' : 'Akun ini masuk lewat Google. Pasang password agar bisa masuk juga dengan email dan password.';
+  $('pwGo').textContent = u.hasPassword ? 'Ganti password' : 'Pasang password';
+}
+function formPost(id, msgId, fn, okText) {
+  $(id).addEventListener('submit', async (e) => {
+    e.preventDefault(); const btn = $(id).querySelector('.go'); btn.disabled = true; say(msgId, '');
+    try { const j = await fn(); if (j && j.user) applyUser(j.user); say(msgId, okText, true); }
+    catch (ex) { if (ex.status === 401) { location.href = '/login?next=/account'; return; } say(msgId, ex.message); }
+    btn.disabled = false;
+  });
+}
+formPost('fProf', 'mProf', () => Pay.api('PUT', '/api/profile', { name: $('fName').value, phone: $('fPhone').value }), 'Data diri tersimpan ✓');
+formPost('fMail', 'mMail', async () => { const j = await Pay.api('POST', '/api/profile/email', { email: $('fEmail').value, password: $('fMailPw').value }); $('fMailPw').value = ''; return j; }, 'Email berhasil diperbarui ✓');
+formPost('fPw', 'mPw', async () => {
+  const j = await Pay.api('POST', '/api/profile/password', { current: $('fCur').value, password: $('fNew').value });
+  $('fCur').value = ''; $('fNew').value = ''; return j;
+}, 'Password tersimpan ✓');
+
+$('avBtn').onclick = () => $('avFile').click();
+$('avFile').onchange = async () => {
+  const f = $('avFile').files[0]; $('avFile').value = ''; if (!f) return;
+  if (f.size > 3 * 1024 * 1024) return say('avMsg', 'Ukuran foto maksimal 3 MB');
+  say('avMsg', 'Mengunggah…', true);
+  try {
+    const r = await fetch('/api/profile/avatar', { method: 'POST', headers: { 'Content-Type': f.type || 'application/octet-stream' }, body: f });
+    const j = await r.json().catch(() => ({}));
+    if (!r.ok) throw new Error(j.error || 'Gagal mengunggah foto');
+    applyUser(j.user); say('avMsg', 'Foto profil diperbarui ✓', true);
+  } catch (ex) { say('avMsg', ex.message); }
+};
+$('avRm').onclick = async () => {
+  try { const j = await Pay.api('DELETE', '/api/profile/avatar'); applyUser(j.user); say('avMsg', 'Foto dihapus', true); }
+  catch (ex) { say('avMsg', ex.message); }
+};
+
+/* ---------- Cek Saldo ---------- */
+function setBal(n) { $('bal').textContent = rp(n); $('stBal').textContent = rp(n); }
+async function loadWallet() {
+  const j = await Pay.api('GET', '/api/wallet'); payInfo = j.pay;
+  setBal(j.balance);
+  const lblOf = { deposit: 'Deposit', purchase: 'Pembelian', refund: 'Pengembalian', adjust: 'Penyesuaian admin' };
+  const P = { deposit: ['', '<path d="M12 5v14M19 12l-7 7-7-7"/>'], purchase: ['m', '<path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/>'], refund: ['r', '<path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/>'], adjust: ['a', '<path d="M4 21v-7M4 10V3M12 21v-9M12 8V3M20 21v-5M20 12V3M1 14h6M9 8h6M17 16h6"/>'] };
+  const emptyIc = '<i><svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></i>';
+  $('hisList').innerHTML = j.history.length ? j.history.map(h => {
+    const p = P[h.type] || P.adjust;
+    return `<div class="tx"><span class="tx-i ${p[0]}"><svg class="ic" viewBox="0 0 24 24">${p[1]}</svg></span><div class="tx-b">${esc(lblOf[h.type] || h.type)}<small>${esc(h.ref || '')} · ${esc((h.created_at || '').slice(0, 16).replace('T', ' '))}</small></div><div class="${h.amount >= 0 ? 'plus' : 'minus'}">${h.amount >= 0 ? '+' : '−'}${rp(Math.abs(h.amount))}</div></div>`;
+  }).join('') : '<div class="empty">' + emptyIc + 'Belum ada transaksi saldo.</div>';
+  if (!payInfo.qris) { $('depForm').innerHTML = '<div class="empty">Deposit belum diaktifkan oleh admin.</div>'; }
+  else if (j.pending.length && !stopDep) showDep(j.pending[0]);
+}
+function showDep(d) {
+  $('depForm').classList.add('hide'); const box = $('depQr'); box.classList.remove('hide');
+  box.innerHTML = '<div class="sub">Deposit ' + esc(d.id) + ' — ' + rp(d.amount) + '</div><div id="dq"></div>';
+  stopDep = Pay.qris($('dq'), 'deposit', d, {
+    onPaid: (nv, bal) => { stopDep = null; if (typeof bal === 'number') setBal(bal); box.innerHTML = '<div class="pay-ok">✓ Deposit ' + rp(nv.amount) + ' berhasil</div><button class="mini" id="again">Deposit lagi</button>'; $('again').onclick = resetDep; loadWallet(); },
+    onEnd: () => { stopDep = null; box.insertAdjacentHTML('beforeend', '<button class="mini" id="again" style="margin-top:10px">Buat deposit baru</button>'); $('again').onclick = resetDep; },
+    onCancel: () => { stopDep = null; resetDep(); loadWallet(); }
+  });
+}
+function resetDep() { $('depQr').classList.add('hide'); $('depForm').classList.remove('hide'); $('amt').value = ''; }
+$('amt').addEventListener('input', () => document.querySelectorAll('#presets button').forEach(b => b.classList.remove('on')));
+[10000, 25000, 50000, 100000, 200000, 500000].forEach(v => { const b = document.createElement('button'); b.type = 'button'; b.textContent = rp(v); b.onclick = () => { $('amt').value = v; document.querySelectorAll('#presets button').forEach(x => x.classList.toggle('on', x === b)); }; $('presets').appendChild(b); });
+$('depGo').onclick = async () => {
+  $('depErr').textContent = ''; $('depGo').disabled = true;
+  try { const j = await Pay.api('POST', '/api/deposit', { amount: parseInt($('amt').value, 10) || 0 }); showDep(j.deposit); }
+  catch (e) { $('depErr').textContent = e.message; }
+  $('depGo').disabled = false;
+};
+
+/* ---------- Pesanan ---------- */
+async function loadRequests() {
+  let rq = []; try { rq = (await Pay.api('GET', '/api/my/custom-requests')).requests || []; } catch {}
+  const lbl = { new: 'Menunggu admin', process: 'Sedang diproses', done: 'Selesai', cancelled: 'Dibatalkan' }, st = { new: 'pending', process: 'pending', done: 'paid', cancelled: 'cancelled' };
+  $('reqList').innerHTML = rq.length ? '<h3 style="font-size:13px;font-weight:800;margin:4px 2px 10px;color:var(--mut);text-transform:uppercase;letter-spacing:.5px">Request Custom</h3>' + rq.map(r =>
+    `<div class="ord s-${st[r.status]}"><div class="ord-h"><strong>${esc(r.id)}</strong><span class="badge b-${st[r.status]}">${lbl[r.status]}</span></div><div class="ord-m"><span>${esc(r.productName)}</span><span>${esc((r.createdAt || '').slice(0, 10))}</span></div><div class="body" style="font-size:13px;line-height:1.5"><b>${esc(r.projectName)}</b><div style="color:var(--mut);margin-top:4px;white-space:pre-wrap">${esc(r.features)}</div>${r.adminNote ? `<div style="margin-top:8px;padding:8px 10px;background:#F1F5F9;border-radius:10px"><b>Catatan admin:</b> ${esc(r.adminNote)}</div>` : ''}</div></div>`).join('') : '';
+}
+async function loadOrders() {
+  loadRequests();
+  const j = await Pay.api('GET', '/api/my/orders');
+  $('stOrd').textContent = j.orders.length ? j.orders.length + ' pesanan' : 'Belum ada';
+  $('ordList').innerHTML = j.orders.length ? '' : '<div class="card empty"><i><svg class="ic" viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></i>Belum ada pesanan.<br><a href="/">Belanja sekarang &rarr;</a></div>';
+  for (const o of j.orders) {
+    const lbl = { paid: 'Lunas', pending: 'Menunggu bayar', expired: 'Kedaluwarsa', failed: 'Gagal', cancelled: 'Dibatalkan' }[o.state];
+    const div = document.createElement('div'); div.className = 'ord s-' + o.state; div.id = 'o-' + o.id;
+    div.innerHTML = `<div class="ord-h"><strong>${esc(o.id)}</strong><span class="badge b-${o.state}">${lbl}</span></div><div class="ord-m"><span><svg class="ic" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>${esc(o.date)}</span><span><svg class="ic" viewBox="0 0 24 24"><path d="M20 12V8H6a2 2 0 0 1 0-4h12v4"/><path d="M4 6v12a2 2 0 0 0 2 2h14v-4"/></svg><b style="color:var(--ink)">${rp(o.total)}</b></span><span><svg class="ic" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="3"/><path d="M2 10h20"/></svg>${o.payMethod === 'balance' ? 'Saldo' : 'QRIS'}</span></div><div class="body"></div>`;
+    $('ordList').appendChild(div);
+    const body = div.querySelector('.body');
+    if (o.state === 'paid') body.innerHTML = Pay.deliveryHtml(o);
+    else if (o.state === 'pending') { const q = document.createElement('div'); body.appendChild(q); Pay.qris(q, 'order', o, { onPaid: () => { loadOrders(); loadWallet(); }, onCancel: () => loadOrders() }); }
+    else body.innerHTML = Pay.deliveryHtml(o).replace(/<a class="pay-dl"[^>]*>.*?<\/a>/g, '');
+  }
+}
+
+$('out').onclick = async () => { try { await fetch('/api/user/logout', { method: 'POST' }); } catch {} location.href = '/'; };
+(async () => {
+  try {
+    const u = (await Pay.api('GET', '/api/me')).user;
+    if (!u) { location.href = '/login?next=/account'; return; }
+    applyUser(u); setBal(u.balance || 0);
+    show(location.hash.slice(1));
+    Pay.api('GET', '/api/my/orders').then(j => { $('stOrd').textContent = j.orders.length ? j.orders.length + ' pesanan' : 'Belum ada'; }).catch(() => {});
+  } catch (e) { if (e.status === 401) location.href = '/login?next=/account'; }
+})();
+</script>
+</body>
+</html>

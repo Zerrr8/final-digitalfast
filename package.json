@@ -1,0 +1,15 @@
+{
+  "name": "luthzzstore",
+  "version": "1.0.0",
+  "description": "LuthzzStore - toko online dengan admin dashboard, siap deploy di Pterodactyl",
+  "main": "server.js",
+  "scripts": {
+    "start": "node start-all.js",
+    "web": "node --disable-warning=ExperimentalWarning server.js"
+  },
+  "engines": {
+    "node": ">=22.13.0"
+  },
+  "license": "MIT",
+  "private": true
+}

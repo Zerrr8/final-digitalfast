@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="LuthzzStore - Premium digital store dengan produk berkualitas">
+    <title>LuthzzStore — Premium Digital Store</title>
+    <link rel="manifest" href="/manifest.webmanifest">
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="chat.css">
+    <link rel="icon" href="/favicon.png">
+</head>
+<body>
+
+    <!-- ============ CUSTOM CURSOR (Desktop only) ============ -->
+    <div class="cursor-dot" id="cursorDot"></div>
+    <div class="cursor-ring" id="cursorRing"></div>
+
+    <!-- ============ NAVBAR ============ -->
+    <header class="navbar" id="navbar">
+        <div class="nav-container">
+            <!-- Custom SVG Logo -->
+            <a href="#" class="logo">
+                <svg class="logo-svg" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" style="stop-color:#2563EB"/>
+                            <stop offset="50%" style="stop-color:#3B82F6"/>
+                            <stop offset="100%" style="stop-color:#7C3AED"/>
+                        </linearGradient>
+                    </defs>
+                    <rect x="2" y="2" width="36" height="36" rx="10" fill="url(#logoGrad)"/>
+                    <path d="M12 28 L12 12 L18 12 L24 22 L24 12 L28 12 L28 28 L22 28 L16 18 L16 28 Z" 
+                          fill="white" stroke="white" stroke-width="0.5" stroke-linejoin="round"/>
+                </svg>
+                <span class="logo-text">Luthzz<span class="logo-accent">.</span></span>
+            </a>
+
+            <!-- Actions -->
+            <div class="nav-actions">
+                <button class="nav-icon-btn" id="searchToggle" aria-label="Search">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/>
+                    </svg>
+                </button>
+                
+                <a href="/login" class="btn-login" id="authBtn">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+                    </svg>
+                    <span>Masuk</span>
+                </a>
+
+            </div>
+        </div>
+
+        <!-- Mobile Search -->
+        <div class="mobile-search" id="mobileSearch">
+            <div class="search-wrapper">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/>
+                </svg>
+                <input type="text" id="searchInput" placeholder="Cari produk impianmu...">
+                <button class="clear-search" id="clearSearch">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M18 6 6 18"/><path d="m6 6 12 12"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- ============ BANNER PROMO (dikelola dari dashboard admin) ============ -->
+    <section class="promo-banner" id="promoBanner" hidden aria-label="Banner promo">
+        <div class="promo-wrap">
+            <div class="promo-track" id="promoTrack"></div>
+            <button type="button" class="promo-nav prev" id="promoPrev" aria-label="Banner sebelumnya">&#8249;</button>
+            <button type="button" class="promo-nav next" id="promoNext" aria-label="Banner berikutnya">&#8250;</button>
+            <div class="promo-dots" id="promoDots"></div>
+        </div>
+    </section>
+
+    <!-- ============ HERO SECTION ============ -->
+    <section class="hero" id="home">
+        <!-- Animated Background Blobs -->
+        <div class="hero-bg">
+            <div class="blob blob-1"></div>
+            <div class="blob blob-2"></div>
+            <div class="blob blob-3"></div>
+            <svg class="grid-pattern" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+                        <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(37,99,235,0.08)" stroke-width="1"/>
+                    </pattern>
+                </defs>
+                <rect width="100%" height="100%" fill="url(#grid)"/>
+            </svg>
+        </div>
+
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-badge reveal-up">
+                    <span class="badge-dot"></span>
+                    <span>New Collection 2026</span>
+                    <svg class="badge-arrow" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+                </div>
+
+                <h1 class="hero-title reveal-up">
+                    <span class="title-line">Temukan Produk</span>
+                    <span class="title-line gradient-text">Digital Untukmu</span>
+                </h1>
+
+                <p class="hero-desc reveal-up">
+                    Koleksi terlengkap produk digital berkualitas dengan harga terbaik.
+                    Belanja mudah, aman, dan terpercaya hanya di LuthzzStore.
+                </p>
+
+                <div class="hero-cta reveal-up">
+                    <a href="#products" class="btn-magnetic btn-primary">
+                        <span>Mulai Belanja</span>
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+                        </svg>
+                    </a>
+                    <a href="#features" class="btn-magnetic btn-ghost">
+                        <span>Pelajari Lebih</span>
+                    </a>
+                </div>
+
+                <!-- Stats -->
+                <div class="hero-stats reveal-up">
+                    <div class="stat-item">
+                        <div class="stat-number" data-target="642">0</div>
+                        <div class="stat-label">Produk Terjual</div>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <div class="stat-number" data-target="595">0</div>
+                        <div class="stat-label">Customer Happy</div>
+                    </div>
+                    <div class="stat-divider"></div>
+                    <div class="stat-item">
+                        <div class="stat-number" data-target="99">0</div>
+                        <div class="stat-label">Rating Positif</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hero Visual: kotak kategori produk yang mengorbit tanpa henti -->
+            <div class="hero-visual reveal-scale" aria-hidden="true">
+                <div class="hv-glow"></div>
+                <div class="hv-stage">
+                    <div class="hv-ring hv-ring-1"></div>
+                    <div class="hv-ring hv-ring-2"></div>
+                    <div class="hv-core">
+                        <span class="hv-pulse"></span><span class="hv-pulse hv-pulse-2"></span>
+                        <span class="hv-core-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4Z"/><path d="M3 6h18"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></span>
+                    </div>
+                    <div class="hv-orbit hv-orbit-1">
+                        <div class="hv-node" style="--a:0deg">
+                            <div class="hv-tile in" style="--g:linear-gradient(135deg,#3B82F6,#1D4ED8)">
+                                <span class="hv-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2.5"/><path d="M8 21h8M12 17v4"/><path d="M2 9h20"/></svg></span>
+                            </div>
+                        </div>
+                        <div class="hv-node" style="--a:120deg">
+                            <div class="hv-tile in" style="--g:linear-gradient(135deg,#22C55E,#0F9D58)">
+                                <span class="hv-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="8" width="16" height="12" rx="3.5"/><path d="M12 8V4.5"/><circle cx="12" cy="3.5" r="1.2"/><circle cx="9" cy="13.5" r="1.2" fill="currentColor"/><circle cx="15" cy="13.5" r="1.2" fill="currentColor"/><path d="M9.5 17h5"/></svg></span>
+                            </div>
+                        </div>
+                        <div class="hv-node" style="--a:240deg">
+                            <div class="hv-tile in" style="--g:linear-gradient(135deg,#8B5CF6,#6D28D9)">
+                                <span class="hv-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/><path d="m14 4-4 16"/></svg></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="hv-orbit hv-orbit-2">
+                        <div class="hv-node" style="--a:45deg">
+                            <div class="hv-tile out" style="--g:linear-gradient(135deg,#F97316,#EA580C)">
+                                <span class="hv-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M11 18h2"/></svg></span>
+                            </div>
+                        </div>
+                        <div class="hv-node" style="--a:135deg">
+                            <div class="hv-tile out" style="--g:linear-gradient(135deg,#EC4899,#DB2777)">
+                                <span class="hv-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M3 9h18M9 9v12"/></svg></span>
+                            </div>
+                        </div>
+                        <div class="hv-node" style="--a:225deg">
+                            <div class="hv-tile out" style="--g:linear-gradient(135deg,#F59E0B,#D97706)">
+                                <span class="hv-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="15" r="4"/><path d="m11 12 9-9M16 7l3 3M14 9l2 2"/></svg></span>
+                            </div>
+                        </div>
+                        <div class="hv-node" style="--a:315deg">
+                            <div class="hv-tile out" style="--g:linear-gradient(135deg,#06B6D4,#0E7490)">
+                                <span class="hv-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 8 12 3 3 8v8l9 5 9-5z"/><path d="m3 8 9 5 9-5M12 13v8"/></svg></span>
+                            </div>
+                        </div>
+                    </div>
+                    <span class="hv-spark hv-spark-1"></span><span class="hv-spark hv-spark-2"></span><span class="hv-spark hv-spark-3"></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="scroll-indicator">
+            <div class="scroll-mouse">
+                <div class="scroll-wheel"></div>
+            </div>
+            <span>Scroll untuk explore</span>
+        </div>
+    </section>
+
+    <!-- ============ WAVE DIVIDER ============ -->
+    <div class="wave-divider">
+        <svg viewBox="0 0 1440 120" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+            <path d="M0,60 C240,120 480,0 720,60 C960,120 1200,0 1440,60 L1440,120 L0,120 Z" fill="#F8FAFC"/>
+        </svg>
+    </div>
+
+    <!-- ============ MARQUEE BRANDS ============ -->
+    <section class="marquee-section">
+        <div class="marquee">
+            <div class="marquee-track">
+                <div class="marquee-item">★ Premium Quality</div>
+                <div class="marquee-item">★ Trusted Store</div>
+                <div class="marquee-item">★ Fast Delivery</div>
+                <div class="marquee-item">★ 24/7 Support</div>
+                <div class="marquee-item">★ Secure Payment</div>
+                <div class="marquee-item">★ Best Price</div>
+                <div class="marquee-item">★ Premium Quality</div>
+                <div class="marquee-item">★ Trusted Store</div>
+                <div class="marquee-item">★ Fast Delivery</div>
+                <div class="marquee-item">★ 24/7 Support</div>
+                <div class="marquee-item">★ Secure Payment</div>
+                <div class="marquee-item">★ Best Price</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ PRODUCTS ============ -->
+    <section class="section products-section" id="products">
+        <div class="container">
+            <div class="section-header products-header reveal-up">
+                <div>
+                    <span class="section-tag">Produk Pilihan</span>
+                    <h2 class="section-title" id="productsTitle">Produk Tersedia</h2>
+                    <p class="section-desc">Semua produk otomatis, jika ada masalah pada produk silahkan untuk chat support</p>
+                </div>
+            </div>
+
+            <!-- Categories (Horizontal Scroll - Minimalis) -->
+            <div class="category-scroll reveal-up" id="categoryList">
+                <!-- Rendered by JS -->
+            </div>
+
+            <!-- Product Grid -->
+            <div class="product-grid" id="productGrid"></div>
+
+            <!-- Empty State -->
+            <div class="empty-state" id="emptyState" style="display:none;">
+                <svg class="empty-svg" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="100" cy="100" r="80" fill="#EFF6FF"/>
+                    <rect x="60" y="70" width="80" height="70" rx="8" fill="#DBEAFE"/>
+                    <path d="M70 90 L100 110 L130 90" stroke="#2563EB" stroke-width="3" fill="none" stroke-linecap="round"/>
+                    <circle cx="100" cy="55" r="12" fill="#2563EB"/>
+                    <path d="M95 55 L100 60 L108 50" stroke="white" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <h3>Produk tidak ditemukan</h3>
+                <p>Coba kata kunci lain atau ubah filter pencarian</p>
+            </div>
+
+            <!-- Load More -->
+            <div class="load-more-wrap" id="loadMoreWrap">
+                <button class="btn-magnetic btn-secondary" id="loadMoreBtn">
+                    <span>Lihat Semua Produk</span>
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M5 12h14"/><path d="m12 5 7 7-7 7"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============ FEATURES - PREMIUM MINIMAL ============ -->
+<section class="section features-section" id="features">
+    <div class="container">
+        <div class="section-header reveal-up">
+            <span class="section-tag">Keunggulan</span>
+            <h2 class="section-title">Kenapa Pilih Digital Fast?</h2>
+            <p class="section-desc">Kami berikan pengalaman belanja terbaik untukmu</p>
+        </div>
+
+        <div class="features-grid">
+            <!-- Feature 1 - Featured Large -->
+            <div class="feature-card feature-featured reveal-up">
+                <div class="feature-bg">
+                    <svg class="feature-bg-svg" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="320" cy="80" r="120" fill="rgba(255,255,255,0.08)">
+                            <animate attributeName="r" values="120;130;120" dur="4s" repeatCount="indefinite"/>
+                        </circle>
+                        <circle cx="350" cy="300" r="80" fill="rgba(255,255,255,0.05)">
+                            <animate attributeName="r" values="80;90;80" dur="5s" repeatCount="indefinite"/>
+                        </circle>
+                    </svg>
+                </div>
+                <div class="feature-icon-wrap">
+                    <svg class="feature-animated-icon" width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path class="bolt-path" d="M26 4L10 26H22L20 44L38 22H26L28 4H26Z" 
+                              fill="white" stroke="white" stroke-width="1.5" stroke-linejoin="round"/>
+                        <circle class="bolt-glow" cx="24" cy="24" r="20" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1">
+                            <animate attributeName="r" values="20;28;20" dur="2s" repeatCount="indefinite"/>
+                            <animate attributeName="opacity" values="0.4;0;0.4" dur="2s" repeatCount="indefinite"/>
+                        </circle>
+                    </svg>
+                </div>
+                <h3 class="feature-title">Pengiriman Super Cepat</h3>
+                <p class="feature-desc">Proses order dalam hitungan menit. Produk digital langsung dikirim ke website, email, atau WhatsApp kamu setelah pembayaran berhasil.</p>
+                <div class="feature-stat">
+                    <span class="feature-stat-num">⚡ &lt; 1 menit produk otomatis</span>
+                    <span class="feature-stat-label">Rata-rata pengiriman</span>
+                </div>
+            </div>
+
+            <!-- Feature 2 -->
+            <div class="feature-card reveal-up">
+                <div class="feature-icon-wrap">
+                    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path class="shield-path" d="M20 4L6 10V18C6 26 12 33 20 36C28 33 34 26 34 18V10L20 4Z" 
+                              fill="none" stroke="var(--primary)" stroke-width="2" stroke-linejoin="round"/>
+                        <path class="shield-check" d="M14 20L18 24L26 16" 
+                              fill="none" stroke="var(--primary)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <h3 class="feature-title">100% Aman</h3>
+                <p class="feature-desc">Transaksi terjamin dengan sistem terpercaya</p>
+            </div>
+
+            <!-- Feature 3 -->
+            <div class="feature-card reveal-up">
+                <div class="feature-icon-wrap">
+                    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <rect class="chat-bg" x="4" y="8" width="32" height="20" rx="4" 
+                              fill="none" stroke="var(--primary)" stroke-width="2"/>
+                        <path class="chat-tail" d="M12 28L16 34L20 28" 
+                              fill="none" stroke="var(--primary)" stroke-width="2" stroke-linejoin="round"/>
+                        <circle class="chat-dot" cx="14" cy="18" r="1.5" fill="var(--primary)">
+                            <animate attributeName="opacity" values="1;0.3;1" dur="1.4s" repeatCount="indefinite"/>
+                        </circle>
+                        <circle class="chat-dot" cx="20" cy="18" r="1.5" fill="var(--primary)">
+                            <animate attributeName="opacity" values="1;0.3;1" dur="1.4s" begin="0.2s" repeatCount="indefinite"/>
+                        </circle>
+                        <circle class="chat-dot" cx="26" cy="18" r="1.5" fill="var(--primary)">
+                            <animate attributeName="opacity" values="1;0.3;1" dur="1.4s" begin="0.4s" repeatCount="indefinite"/>
+                        </circle>
+                    </svg>
+                </div>
+                <h3 class="feature-title">Support 24/7</h3>
+                <p class="feature-desc">Tim kami siap membantu kapan saja</p>
+            </div>
+
+            <!-- Feature 4 -->
+            <div class="feature-card reveal-up">
+                <div class="feature-icon-wrap">
+                    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path class="chart-line" d="M6 30L14 22L22 26L34 12" 
+                              fill="none" stroke="var(--primary)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                        <circle class="chart-dot" cx="34" cy="12" r="3" fill="var(--primary)">
+                            <animate attributeName="r" values="3;4;3" dur="2s" repeatCount="indefinite"/>
+                        </circle>
+                        <path class="chart-arrow" d="M28 12H34V18" 
+                              fill="none" stroke="var(--primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <h3 class="feature-title">Harga Terbaik</h3>
+                <p class="feature-desc">Produk berkualitas dengan harga kompetitif</p>
+            </div>
+
+            <!-- Feature 5 -->
+            <div class="feature-card reveal-up">
+                <div class="feature-icon-wrap">
+                    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path class="refresh-path" d="M32 20C32 26.6 26.6 32 20 32C13.4 32 8 26.6 8 20C8 13.4 13.4 8 20 8C23.5 8 26.7 9.5 29 12" 
+                              fill="none" stroke="var(--primary)" stroke-width="2" stroke-linecap="round"/>
+                        <path class="refresh-arrow" d="M29 6V12H23" 
+                              fill="none" stroke="var(--primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path class="refresh-check" d="M14 20L18 24L26 16" 
+                              fill="none" stroke="var(--success)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <h3 class="feature-title">Garansi Refund</h3>
+                <p class="feature-desc">Jaminan uang kembali jika produk bermasalah</p>
+            </div>
+
+            <!-- Feature 6 - Premium Card -->
+            <div class="feature-card feature-premium reveal-up">
+                <div class="feature-icon-wrap">
+                    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path class="star-path" d="M20 4L24 14L34 14L26 21L29 32L20 25L11 32L14 21L6 14L16 14L20 4Z" 
+                              fill="none" stroke="var(--primary)" stroke-width="2" stroke-linejoin="round"/>
+                        <circle class="star-center" cx="20" cy="18" r="4" fill="var(--primary)">
+                            <animate attributeName="r" values="4;5;4" dur="2s" repeatCount="indefinite"/>
+                        </circle>
+                    </svg>
+                </div>
+                <h3 class="feature-title">Produk Original</h3>
+                <p class="feature-desc">100% produk asli dengan garansi resmi</p>
+                <div class="feature-badge">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="20 6 9 17 4 12"/>
+                    </svg>
+                    Verified
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- ============ FOOTER ============ -->
+    <footer class="footer" id="contact">
+        <div class="footer-wave">
+            <svg viewBox="0 0 1440 100" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+                <path d="M0,40 C360,100 720,0 1080,60 C1260,90 1380,40 1440,40 L1440,100 L0,100 Z" fill="#0F172A"/>
+            </svg>
+        </div>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col footer-brand">
+                    <a href="#" class="logo">
+                        <svg class="logo-svg" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="2" y="2" width="36" height="36" rx="10" fill="url(#logoGrad)"/>
+                            <path d="M12 28 L12 12 L18 12 L24 22 L24 12 L28 12 L28 28 L22 28 L16 18 L16 28 Z" fill="white"/>
+                        </svg>
+                        <span class="logo-text">Luthzz<span class="logo-accent">.</span></span>
+                    </a>
+                    <p class="footer-desc">Produk Digital yang membantu mu untuk upgrade lebih profesional. Mau punya bisnis digital tapi gak bisa buat? Kami solusi anda. Hanya dengan 1 klik kamu bisa memulai bisnis mu sekarang!</p>
+                    <div class="social-links">
+                        <a href="#" aria-label="Instagram">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="TikTok">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5.8 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1.84-.1z"/>
+                            </svg>
+                        </a>
+                        <a href="#" aria-label="YouTube">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Navigasi</h4>
+                    <ul class="footer-links">
+                        <li><a href="#home">Beranda</a></li>
+                        <li><a href="#categories">Kategori</a></li>
+                        <li><a href="#products">Produk</a></li>
+                        <li><a href="#features">Keunggulan</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Kategori</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Digital</a></li>
+                        <li><a href="#">Elektronik</a></li>
+                        <li><a href="#">Accessories</a></li>
+                        <li><a href="#">Software</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Hubungi Kami</h4>
+                    <ul class="footer-contact">
+                        <li>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                            </svg>
+                            <span>+62 812-3456-7890</span>
+                        </li>
+                        <li>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/>
+                            </svg>
+                            <span>hello@luthzzstore.com</span>
+                        </li>
+                        <li>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/>
+                            </svg>
+                            <span>Indonesia</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 <strong>LuthzzStore</strong>. All rights reserved. Made with 
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="#2563EB" style="vertical-align: middle;">
+                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                    </svg>
+                    by Luthzz
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ============ FLOATING BUTTONS ============ -->
+    <button class="float-top" id="backToTop" aria-label="Back to top">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m18 15-6-6-6 6"/>
+        </svg>
+    </button>
+
+    <!-- ============ PRODUCT DETAIL MODAL ============ -->
+    <div class="modal modal-sheet" id="productModal" role="dialog" aria-modal="true" aria-label="Detail produk">
+        <div class="modal-content modal-product">
+            <button class="modal-close" id="closeModal" aria-label="Tutup">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M18 6 6 18"/><path d="m6 6 12 12"/>
+                </svg>
+            </button>
+            <div class="modal-body" id="modalBody"></div>
+        </div>
+    </div>
+
+    <!-- ============ CHECKOUT MODAL ============ -->
+    <div class="modal" id="checkoutModal">
+        <div class="modal-content modal-checkout">
+            <button class="modal-close" id="closeCheckout">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M18 6 6 18"/><path d="m6 6 12 12"/>
+                </svg>
+            </button>
+            <div class="checkout-header">
+                <h3 id="coTitle">Checkout Pesanan</h3>
+                <p id="coSub">Produk digital dikirim otomatis setelah pembayaran berhasil</p>
+            </div>
+            <form class="checkout-form" id="checkoutForm">
+                <div class="co-list" id="coList"></div>
+                <div class="co-bal" id="coBal"></div>
+                <div class="checkout-summary">
+                    <div class="summary-row">
+                        <span>Subtotal</span>
+                        <span id="coSubtotal">Rp 0</span>
+                    </div>
+                    <div class="summary-row total">
+                        <span>Total Bayar</span>
+                        <strong id="coTotal">Rp 0</strong>
+                    </div>
+                </div>
+                <div class="co-how" id="coHow"></div>
+                <div class="co-err" id="coErr"></div>
+                <button type="submit" class="btn-magnetic btn-primary btn-full" id="coSubmit">
+                    <span>Bayar Sekarang</span>
+                </button>
+            </form>
+            <div id="coResult" style="display:none"></div>
+        </div>
+    </div>
+    
+    <!-- ============ CUSTOM REQUEST MODAL ============ -->
+    <div class="modal" id="customModal">
+        <div class="modal-content modal-checkout">
+            <button class="modal-close" id="closeCustom" type="button" aria-label="Tutup">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+            </button>
+            <div class="checkout-header">
+                <h3 id="crTitle">Request Custom</h3>
+                <p>Ceritakan kebutuhan Anda. Harga ditentukan setelah admin meninjau request.</p>
+            </div>
+            <div class="cr-login" id="crLogin" style="display:none">Anda belum masuk. <a href="/login?next=/">Masuk / Daftar</a> dulu agar request tersimpan di akun Anda.</div>
+            <form class="checkout-form" id="crForm" novalidate>
+                <div class="form-group"><label for="crName">Nama web / bot *</label><input id="crName" type="text" maxlength="120" placeholder="Contoh: Bot Toko Luthzz / Web Company Profile"></div>
+                <div class="form-group"><label for="crFeatures">Fitur yang diinginkan *</label><textarea id="crFeatures" rows="5" maxlength="3000" placeholder="Tulis fitur yang diinginkan, misal: menu jualan, pembayaran QRIS, panel admin, auto order, dll."></textarea></div>
+                <div class="cr-row">
+                    <div class="form-group"><label for="crWa">WhatsApp</label><input id="crWa" type="tel" inputmode="tel" maxlength="40" placeholder="08xxxxxxxxxx"></div>
+                    <div class="form-group"><label for="crEmail">Email</label><input id="crEmail" type="email" maxlength="200" placeholder="nama@email.com"></div>
+                </div>
+                <div class="cr-hint">Isi minimal salah satu: WhatsApp atau email yang bisa dihubungi.</div>
+                <div class="form-group"><label for="crRef">Referensi / contoh (opsional)</label><input id="crRef" type="text" maxlength="1000" placeholder="Link web/bot yang jadi contoh"></div>
+                <div class="cr-row">
+                    <div class="form-group"><label for="crBudget">Budget (opsional)</label><input id="crBudget" type="text" maxlength="80" placeholder="Contoh: 300rb - 500rb"></div>
+                    <div class="form-group"><label for="crDeadline">Target selesai (opsional)</label><input id="crDeadline" type="text" maxlength="80" placeholder="Contoh: 1 minggu"></div>
+                </div>
+                <div class="form-group"><label for="crNotes">Catatan tambahan (opsional)</label><textarea id="crNotes" rows="3" maxlength="2000" placeholder="Hal lain yang perlu admin ketahui"></textarea></div>
+                <div class="co-err" id="crErr"></div>
+                <button type="submit" class="btn-magnetic btn-primary btn-full" id="crSubmit"><span>Kirim Request</span></button>
+            </form>
+            <div id="crDone" style="display:none"></div>
+        </div>
+    </div>
+
+    <!-- ============ ANNOUNCEMENT POPUP ============ -->
+    <div class="announcement-overlay" id="announcementOverlay" role="dialog" aria-modal="true" aria-labelledby="annTitle">
+        <div class="announcement-modal" id="announcementModal">
+            <button class="announcement-close" id="announcementClose" aria-label="Tutup">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+            </button>
+            <div class="announcement-media" id="annMedia">
+                <img id="annImage" alt="" decoding="async">
+                <div class="announcement-icon" id="annIcon"></div>
+            </div>
+            <div class="announcement-content">
+                <span class="announcement-type-badge" id="annTypeBadge">INFO</span>
+                <h2 class="announcement-title" id="annTitle">Judul Pengumuman</h2>
+                <p class="announcement-message" id="annMessage">Pesan pengumuman.</p>
+                <div class="announcement-actions">
+                    <a href="#" class="ann-btn ann-btn-primary" id="annCtaLink" style="display:none;">
+                        <span id="annCtaText">Lihat Detail</span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+                    </a>
+                    <button type="button" class="ann-btn ann-btn-primary" id="annReadBtn">
+                        <span>Sudah Baca</span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                    </button>
+                    <button type="button" class="ann-link" id="annSnoozeBtn">Jangan tampilkan lagi (3 jam)</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ============ TOAST ============ -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <script src="pay.js"></script>
+    <script src="script.js"></script>
+    <script src="chat.js" defer></script>
+    <script src="/push.js" data-role="user" defer></script>
+</body>
+</html>

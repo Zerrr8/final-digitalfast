@@ -1,0 +1,200 @@
+{
+ "products": [
+  {
+   "id": 1,
+   "name": "Wireless Earbuds Pro Max",
+   "category": "Elektronik",
+   "price": 450000,
+   "oldPrice": 650000,
+   "image": "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=500",
+   "badge": "SALE",
+   "rating": 4.8,
+   "stock": 25,
+   "description": "Earbuds wireless premium dengan Active Noise Cancelling, baterai tahan 30 jam, dan kualitas suara Hi-Fi. Dilengkapi charging case dan koneksi Bluetooth 5.3.",
+   "createdAt": "2026-10-15"
+  },
+  {
+   "id": 2,
+   "name": "Smartwatch Fitness Tracker",
+   "category": "Elektronik",
+   "price": 899000,
+   "oldPrice": 1200000,
+   "image": "https://images.unsplash.com/photo-1523275335684-37898b6b08d2?w=500",
+   "badge": "BEST",
+   "rating": 4.9,
+   "stock": 18,
+   "description": "Smartwatch modern dengan layar AMOLED, monitor detak jantung, SpO2, GPS, dan 100+ mode olahraga. Water resistant hingga 50 meter.",
+   "createdAt": "2026-10-20"
+  },
+  {
+   "id": 3,
+   "name": "Mechanical Keyboard RGB",
+   "category": "Accessories",
+   "price": 750000,
+   "oldPrice": null,
+   "image": "https://images.unsplash.com/photo-1587829741301-dc798b83add3?w=500",
+   "badge": "NEW",
+   "rating": 4.7,
+   "stock": 12,
+   "description": "Keyboard mekanikal dengan switch blue, RGB per-key, hot-swappable, dan build quality premium. Cocok untuk gaming dan typing.",
+   "createdAt": "2026-11-01"
+  },
+  {
+   "id": 4,
+   "name": "Premium Backpack Anti-Theft",
+   "category": "Accessories",
+   "price": 320000,
+   "oldPrice": 450000,
+   "image": "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=500",
+   "badge": "SALE",
+   "rating": 4.6,
+   "stock": 30,
+   "description": "Tas ransel anti-maling dengan USB charging port, kompartemen laptop 15.6 inch, bahan waterproof, dan desain ergonomis.",
+   "createdAt": "2026-09-10"
+  },
+  {
+   "id": 5,
+   "name": "Adobe Creative Suite License",
+   "category": "Software",
+   "price": 1250000,
+   "oldPrice": 1800000,
+   "image": "https://images.unsplash.com/photo-1626785774573-4b799315345d?w=500",
+   "badge": "BEST",
+   "rating": 5,
+   "stock": 50,
+   "description": "Lisensi resmi Adobe Creative Cloud 1 tahun. Termasuk Photoshop, Illustrator, Premiere Pro, dan aplikasi Adobe lainnya.",
+   "createdAt": "2026-10-25"
+  },
+  {
+   "id": 6,
+   "name": "Gaming Mouse Wireless",
+   "category": "Accessories",
+   "price": 385000,
+   "oldPrice": null,
+   "image": "https://images.unsplash.com/photo-1527814050087-3793815479db?w=500",
+   "badge": "NEW",
+   "rating": 4.5,
+   "stock": 22,
+   "description": "Mouse gaming wireless dengan sensor 25K DPI, 7 tombol programmable, RGB lighting, dan baterai tahan 70 jam.",
+   "createdAt": "2026-10-28"
+  },
+  {
+   "id": 7,
+   "name": "Digital Art Tablet 10 inch",
+   "category": "Digital",
+   "price": 1650000,
+   "oldPrice": 2100000,
+   "image": "https://images.unsplash.com/photo-1626908013351-800ddd734b8a?w=500",
+   "badge": "SALE",
+   "rating": 4.8,
+   "stock": 8,
+   "description": "Tablet gambar digital dengan layar 10 inch full laminated, 8192 level pressure, dan kompatibel dengan semua software desain populer.",
+   "createdAt": "2026-10-18"
+  },
+  {
+   "id": 8,
+   "name": "Portable Power Bank 20000mAh",
+   "category": "Elektronik",
+   "price": 275000,
+   "oldPrice": 350000,
+   "image": "https://images.unsplash.com/photo-1609592842645-eefe4c1f2a75?w=500",
+   "badge": "BEST",
+   "rating": 4.7,
+   "stock": 40,
+   "description": "Power bank 20000mAh dengan fast charging 22.5W, 3 output port, LED display, dan desain compact. Support semua device.",
+   "createdAt": "2026-10-05"
+  },
+  {
+   "id": 9,
+   "name": "Windows 11 Pro License",
+   "category": "Software",
+   "price": 185000,
+   "oldPrice": null,
+   "image": "https://images.unsplash.com/photo-1624571409412-1f253e1ecc89?w=500",
+   "badge": "NEW",
+   "rating": 4.9,
+   "stock": 100,
+   "description": "Lisensi Windows 11 Pro original, aktivasi permanen, support update seumur hidup. Garansi full dari Microsoft.",
+   "createdAt": "2026-11-02"
+  },
+  {
+   "id": 10,
+   "name": "Bluetooth Speaker Portable",
+   "category": "Elektronik",
+   "price": 425000,
+   "oldPrice": 550000,
+   "image": "https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?w=500",
+   "badge": "SALE",
+   "rating": 4.6,
+   "stock": 15,
+   "description": "Speaker bluetooth portable dengan suara bass yang powerful, baterai 12 jam, waterproof IPX7, dan desain stylish.",
+   "createdAt": "2026-09-20"
+  },
+  {
+   "id": 11,
+   "name": "USB-C Hub 7-in-1",
+   "category": "Digital",
+   "price": 295000,
+   "oldPrice": null,
+   "image": "https://images.unsplash.com/photo-1625948515291-69613efd103f?w=500",
+   "badge": null,
+   "rating": 4.4,
+   "stock": 35,
+   "description": "Hub USB-C dengan 7 port: HDMI 4K, USB 3.0 x2, SD/Micro SD, PD 100W, dan ethernet. Kompatibel dengan semua laptop modern.",
+   "createdAt": "2026-10-12"
+  },
+  {
+   "id": 12,
+   "name": "Webcam 4K Auto Focus",
+   "category": "Digital",
+   "price": 580000,
+   "oldPrice": 750000,
+   "image": "https://images.unsplash.com/photo-1587826080692-f439cd0b70da?w=500",
+   "badge": "SALE",
+   "rating": 4.7,
+   "stock": 20,
+   "description": "Webcam 4K dengan auto focus, noise cancelling mic, wide angle 90°, dan low light correction. Cocok untuk streaming dan meeting.",
+   "createdAt": "2026-10-22"
+  }
+ ],
+ "categories": [
+  {
+   "name": "Elektronik"
+  },
+  {
+   "name": "Digital"
+  },
+  {
+   "name": "Accessories"
+  },
+  {
+   "name": "Software"
+  },
+  {
+   "name": "Lainnya"
+  }
+ ],
+ "banners": [
+  {
+   "tag": "PROMO SPESIAL",
+   "title": "Diskon Hingga 50% Untuk Semua Produk Digital",
+   "desc": "Dapatkan penawaran terbaik untuk produk digital pilihan. Promo terbatas, jangan sampai kehabisan!",
+   "bg": "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1600",
+   "cta": "Belanja Sekarang"
+  },
+  {
+   "tag": "NEW ARRIVAL",
+   "title": "Koleksi Terbaru Gadget & Accessories Premium",
+   "desc": "Temukan produk terbaru dengan kualitas terbaik dan harga terjangkau. Gratis ongkir untuk pembelian pertama.",
+   "bg": "https://images.unsplash.com/photo-1498049794561-7780e7231661?w=1600",
+   "cta": "Lihat Koleksi"
+  },
+  {
+   "tag": "FLASH SALE",
+   "title": "Flash Sale Setiap Hari Jumat Pukul 12.00",
+   "desc": "Jangan lewatkan kesempatan emas untuk mendapatkan produk impian dengan harga spesial setiap minggunya.",
+   "bg": "https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=1600",
+   "cta": "Cek Promo"
+  }
+ ]
+}

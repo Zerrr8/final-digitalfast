@@ -1,0 +1,11 @@
+.env
+data/*.db
+data/*.db-*
+data/.initial-admin-password
+node_modules/
+
+bin/
+
+data/files/
+
+data/backups/

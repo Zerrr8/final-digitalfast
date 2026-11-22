@@ -1,0 +1,24 @@
+[Unit]
+Description=LuthzzStore (Node.js web store)
+After=network.target
+
+[Service]
+Type=simple
+User=luthzz
+Group=luthzz
+WorkingDirectory=/opt/luthzzstore
+EnvironmentFile=/opt/luthzzstore/.env
+Environment=NODE_ENV=production
+Environment=HOST=127.0.0.1
+ExecStart=/usr/bin/node --disable-warning=ExperimentalWarning /opt/luthzzstore/server.js
+Restart=always
+RestartSec=3
+# Hardening
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/opt/luthzzstore/data
+
+[Install]
+WantedBy=multi-user.target
