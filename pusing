@@ -1,0 +1,46 @@
+# Salin menjadi ".env" lalu isi. JANGAN commit file .env ke GitHub.
+
+# WAJIB: password halaman /admin (minimal 12 karakter, acak)
+ADMIN_PASSWORD=adminku
+
+# WAJIB di produksi: string acak panjang untuk menandatangani sesi login
+# Buat dengan:  openssl rand -hex 32
+SESSION_SECRET=
+
+# Port internal aplikasi (Nginx yang membuka 80/443 ke publik)
+PORT=3000
+# 127.0.0.1 = hanya bisa diakses lewat Nginx (disarankan di VPS)
+HOST=127.0.0.1
+
+# Opsional: lokasi database SQLite (default ./data/store.db)
+# DB_PATH=./data/store.db
+
+# ---------- Pembayaran BuatQris (deposit saldo + bayar QRIS) ----------
+# Ambil di dashboard BuatQris -> Open API. JANGAN dibagikan / di-commit.
+BUATQRIS_ACCOUNT_ID=user_6abf97eca8e637.59439852
+BUATQRIS_SECRET_TOKEN=sk_live_250dc719b0f543bd7141ee92131a6fd91c1b3859bc65b50b9460539c48d1fb60
+# Dashboard BuatQris -> Open API -> "Signing Secret" (untuk verifikasi webhook)
+BUATQRIS_SIGNING_SECRET=
+# true = mode sandbox (tanpa uang asli). Ubah ke false saat sudah live.
+BUATQRIS_TEST=false
+# buyer = biaya admin ditanggung pembeli (default) | user = dipotong dari saldo merchant
+BUATQRIS_FEE_BY=buyer
+# Opsional: qris_one | qris_two | qris_three | qris_four (kosong = default admin BuatQris)
+# BUATQRIS_METHOD=
+# Opsional: batas nominal QRIS (default 1000 - 5000000)
+# QRIS_MIN=1000
+# QRIS_MAX=5000000
+# Batas ukuran upload file produk (MB)
+MAX_UPLOAD_MB=200
+
+# Opsional: Login Google (butuh HTTPS + domain). Kosong = tombol Google dinonaktifkan
+# Bentuk: 1234567890-abcdefg.apps.googleusercontent.com
+GOOGLE_CLIENT_ID=513022872050-fd6ndgphecqo992ncfbq610guvovouhh.apps.googleusercontent.com
+
+# Cookie Secure: biarkan kosong (otomatis aktif saat lewat HTTPS via Nginx).
+# COOKIE_SECURE=true
+
+# --- Hanya jika memakai Cloudflare Tunnel (npm start), BUKAN untuk Nginx ---
+# TUNNEL_TOKEN=
+# START_TUNNEL=false
+ 
